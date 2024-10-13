@@ -66,14 +66,15 @@ jobs:
         with:
           node-version: "22"
 
-      - name: Change to frontend directory
-        run: cd rental_frontend
-
       - name: Install dependencies
-        run: npm install
+        run: |
+          cd rental_frontend
+          npm install
 
-      - name: Bulid React project
-        run: npm run build
+      - name: Build React project
+        run: |
+          cd rental_frontend
+          npm run build
 
       - name: Upload to S3
         uses: shallwefootball/s3-upload-action@master
@@ -82,4 +83,4 @@ jobs:
           aws_key_id: ${{secrets.AWS_KEY_ID}}
           aws_secret_access_key: ${{secrets.AWS_SECRET_ACCESS_KEY}}
           aws_bucket: rental-sideproject
-          source_dir: ./build
+          source_dir: ./rental_frontend/build
