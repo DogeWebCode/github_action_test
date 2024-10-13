@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        ec2_host: ["EC2_HOST_01", "EC2_HOST_02"]
+        ec2_host: ["EC2_HOST_03", "EC2_HOST_04"]
 
     steps:
       - name: SSH to EC2 and deploy on ${{ matrix.ec2_host }}
