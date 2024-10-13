@@ -20,7 +20,7 @@ WORKDIR /app
 EXPOSE 8080
 
 # 複製從第一階段構建出來的 jar 文件
-COPY --from=builder /app/target/rental_backend.jar .
+COPY --from=builder /app/target/rental_backend.jar ./rental_backend
 
 # 執行應用程式
 CMD ["java", "-jar", "rental_backend.jar"]
