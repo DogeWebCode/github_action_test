@@ -15,6 +15,7 @@ jobs:
 
       - name: Generate application.properties
         run: |
+          mkdir -p src/main/resources
           echo "spring.application.name=rental_backend" > src/main/resources/application.properties
           echo "spring.data.mongodb.uri=${{ secrets.MONGODB_URI }}" >> src/main/resources/application.properties
           echo "spring.datasource.url=${{ secrets.DATASOURCE_URL }}" >> src/main/resources/application.properties
