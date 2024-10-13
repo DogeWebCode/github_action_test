@@ -9,7 +9,7 @@ COPY pom.xml .
 COPY src ./src
 
 # 使用 Maven 進行編譯與打包
-RUN mvn clean package -Djar.finalName=rental_backend
+RUN mvn clean package -DskipTests -Djar.finalName=rental_backend
 
 # 第二階段：使用較輕量的 Alpine JRE 映像
 FROM eclipse-temurin:17-jre-alpine
