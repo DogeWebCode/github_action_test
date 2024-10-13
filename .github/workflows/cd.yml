@@ -23,6 +23,7 @@ jobs:
           key: ${{ secrets.EC2_SSH_KEY }}
           port: 22
           script: |
+            echo "Connected to ${{ secrets[matrix.ec2_host] }}"
             docker pull james66689/rental_backend:latest
 
             docker stop rental_backend || true
@@ -33,5 +34,5 @@ jobs:
               -p 8080:8080 \
               --restart unless-stopped \
               james66689/rental_backend:latest
-              
+
             docker image prune -f
