@@ -19,7 +19,6 @@ import {
   LoginOutlined,
   MessageOutlined,
   HeartOutlined,
-  UserOutlined,
   MenuOutlined,
   UploadOutlined,
 } from "@ant-design/icons";
