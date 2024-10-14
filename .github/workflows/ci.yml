@@ -16,24 +16,25 @@ jobs:
       - name: Generate application.properties
         run: |
           mkdir -p src/main/resources
-          echo "spring.application.name=rental_backend" > src/main/resources/application.properties
-          echo "spring.data.mongodb.uri=${{ secrets.MONGODB_URI }}" >> src/main/resources/application.properties
-          echo "spring.datasource.url=${{ secrets.DATASOURCE_URL01 }}" >> src/main/resources/application.properties
-          echo "spring.datasource.username=${{ secrets.DATASOURCE_USERNAME }}" >> src/main/resources/application.properties
-          echo "spring.datasource.password=${{ secrets.DATASOURCE_PASSWORD }}" >> src/main/resources/application.properties
-          echo "spring.jpa.hibernate.ddl-auto=update" >> src/main/resources/application.properties
-          echo "spring.jpa.open-in-view=false" >> src/main/resources/application.properties
-          echo "spring.jpa.properties.hibernate.jdbc.time_zone=Asia/Taipei" >> src/main/resources/application.properties
-          echo "jwt.secret=${{ secrets.JWT_SECRET }}" >> src/main/resources/application.properties
-          echo "cors.allow.origins=${{ secrets.CORS_ALLOW_ORIGINS }}" >> src/main/resources/application.properties
-          echo "spring.data.redis.host=${{ secrets.REDIS_HOST }}" >> src/main/resources/application.properties
-          echo "spring.data.redis.port=6379" >> src/main/resources.application.properties
-          echo "spring.data.redis.password=${{ secrets.REDIS_PASSWORD }}" >> src/main/resources.application.properties
-          echo "spring.data.redis.ssl.enabled=true" >> src/main/resources/application.properties
-          echo "amazon.aws.region=${{ secrets.AWS_REGION }}" >> src/main/resources/application.properties
-          echo "google.api.key=${{ secrets.GOOGLE_API_KEY }}" >> src/main/resources/application.properties
-          echo "google.api.geocoding.url=https://maps.googleapis.com/maps/api/geocode/json" >> src/main/resources/application.properties
-
+          cat << EOF > src/main/resources/application.properties
+          spring.application.name=rental_backend
+          spring.data.mongodb.uri=${{ secrets.MONGODB_URI }}
+          spring.datasource.url=${{ secrets.DATASOURCE_URL }}
+          spring.datasource.username=${{ secrets.DATASOURCE_USERNAME }}
+          spring.datasource.password=${{ secrets.DATASOURCE_PASSWORD }}
+          spring.jpa.hibernate.ddl-auto=update
+          spring.jpa.open-in-view=false
+          spring.jpa.properties.hibernate.jdbc.time_zone=Asia/Taipei
+          jwt.secret=${{ secrets.JWT_SECRET }}
+          cors.allow.origins=${{ secrets.CORS_ALLOW_ORIGINS }}
+          spring.data.redis.host=${{ secrets.REDIS_HOST }}
+          spring.data.redis.port=6379
+          spring.data.redis.password=${{ secrets.REDIS_PASSWORD }}
+          spring.data.redis.ssl.enabled=true
+          amazon.aws.region=${{ secrets.AWS_REGION }}
+          google.api.key=${{ secrets.GOOGLE_API_KEY }}
+          google.api.geocoding.url=https://maps.googleapis.com/maps/api/geocode/json
+          EOF
       - name: Set up JDK 17
         uses: actions/setup-java@v2
         with:
