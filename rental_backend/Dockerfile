@@ -23,6 +23,5 @@ EXPOSE 8080
 COPY --from=builder /app/target/rental_backend-0.0.1-SNAPSHOT.jar .
 COPY src/main/resources/application.properties /app/application.properties
 
-
 # 執行應用程式
 CMD ["java", "-jar", "rental_backend-0.0.1-SNAPSHOT.jar"]
