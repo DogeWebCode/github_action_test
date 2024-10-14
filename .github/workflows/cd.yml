@@ -26,8 +26,13 @@ jobs:
             echo "Connected to ${{ secrets[matrix.ec2_host] }}"
             docker pull james66689/rental_backend:latest
 
-            docker stop rental_backend || true
-            docker rm rental_backend || true
+            # 確保不存在與 rental_backend 名稱衝突的容器
+            if docker ps -a --filter "name=rental_backend" --format "{{.ID}}" | grep .; then
+              docker stop rental_backend
+              docker rm rental_backend
+            fi
+
+            sleep 2
 
             docker run -d \
               --name rental_backend \
