@@ -44,6 +44,7 @@ jobs:
 
       - name: Build backend Docker image
         run: |
+          cd rental_backend
           docker build -t james66689/rental_backend:latest -f ./rental_backend/Dockerfile .
 
       - name: Login to DockerHub
