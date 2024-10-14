@@ -21,6 +21,7 @@ jobs:
           spring.datasource.url=${{ secrets.DATASOURCE_URL }}
           spring.datasource.username=${{ secrets.DATASOURCE_USERNAME }}
           spring.datasource.password=${{ secrets.DATASOURCE_PASSWORD }}
+          cloud.aws.region.static=ap-northeast-1
           spring.jpa.hibernate.ddl-auto=update
           spring.jpa.open-in-view=false
           spring.jpa.properties.hibernate.jdbc.time_zone=Asia/Taipei
