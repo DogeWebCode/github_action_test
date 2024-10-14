@@ -63,6 +63,15 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
+      - name: Generate .env.production
+        run: |
+          cat << EOF > ./rental_frontend/.env.production
+          REACT_APP_GOOGLE_MAPS_API_KEY=${{ secrets.REACT_APP_GOOGLE_MAPS_API_KEY }}
+          REACT_APP_GOOGLE_MAPS_ID=${{ secrets.REACT_APP_GOOGLE_MAPS_ID }}
+          REACT_APP_WS_ENDPOINT_PROD=${{ secrets.REACT_APP_WS_ENDPOINT_PROD }}
+          EOF
+          cat ./rental_frontend/.env.production
+
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
